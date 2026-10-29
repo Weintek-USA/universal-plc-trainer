@@ -1,4 +1,4 @@
-# How to run the Virtual PLC Trainer
+# How to run the Universal PLC Trainer by Weintek
 
 ## Overview
 
