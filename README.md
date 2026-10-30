@@ -114,7 +114,7 @@ The **Universal Virtual PLC Trainer** has been tested with the following desktop
 **Recommended:** Use a current stable version of Chrome, Edge, Firefox, or Safari with WebGL available. Hardware-accelerated graphics are recommended for smoother interaction with the 3D workstation.
 
 > [!NOTE]
-> **Testing scope:** Browser compatibility information is based on third-party research and internal testing. While older browser versions may support WebGL, compatibility with the Universal PLC Trainer has not been verified. Hardware acceleration is recommended for optimal performance.
+> **Testing scope:** Browser compatibility information is based on third-party WebGL research and internal testing. While older browser versions may support WebGL, compatibility with the Universal PLC Trainer has not been verified. Hardware acceleration is recommended for optimal performance.
 
 
 [!NOTE]
