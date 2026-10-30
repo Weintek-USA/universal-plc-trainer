@@ -188,7 +188,7 @@ Expand the category that best matches what you're seeing.
 
 </details>
 
-**Still having trouble?** Email [arden-yazici@weintekusa.com](mailto:arden-yazici@weintekusa.com) with **what you did, what you expected, and what happened**. Include a screenshot of the **bench** and the **CHECK WIRING** report, if possible.
+**Still experiencing issues?** Please contact [arden-yazici@weintekusa.com](mailto:arden-yazici@weintekusa.com) with a brief description of the issue and any relevant screenshots.
 
 ## See also
 
