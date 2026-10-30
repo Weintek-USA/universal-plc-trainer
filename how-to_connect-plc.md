@@ -16,6 +16,7 @@ Before you connect a PLC, make sure you have:
 * `universal-plc-trainer-bridge-v{#}.js`, the bridge service
 * Node.js 22 or later, to run the bridge — check with `node --version`
 * CODESYS V3.5 SP21 Patch 6 or later, with the CODESYS Control Win V3 x64 runtime and the Modbus TCP Client device package installed
+* Optional: `{universal-plc-trainer-codesys-v#.project}`, the provided CODESYS project, which replaces most of the configuration below
 * TCP port 502 free on the machine running the bridge
 
 ### Why a bridge service is needed
@@ -45,6 +46,32 @@ CODESYS is therefore configured as a client, not a server, and the bridge must b
     Open the trainer and press **EXTERNAL PLC**. The label beside the button should read *BRIDGE ONLY — NO PLC*, indicating that the trainer is connected to the bridge and no PLC is polling it yet. This is the expected state before the PLC is started.
 
 ## Configure the PLC in CODESYS
+
+Use either the provided CODESYS project or a project you configure yourself. Both end with the PLC polling the bridge.
+
+### Using the provided CODESYS project
+
+`{universal-plc-trainer-codesys-v#.project}` contains the Modbus TCP Client device, its channels mapped to the register map below, and a short program that drives DO0 from DI0.
+
+1. Open the project file in CODESYS.
+
+    It was saved in {CODESYS version}. A later version prompts to update the project; accept the prompt. An earlier version cannot open it.
+
+2. Bind the project to your runtime.
+
+    Double-click **Device** in the device tree, select **Scan network**, and choose the CODESYS Control Win V3 instance running on your machine. The project was saved against a different machine's runtime, so this step is required even when every other setting matches.
+
+3. Confirm the Ethernet adapter and client address.
+
+    Check that the Ethernet adapter points at a network interface on your machine, and that the Modbus TCP Client's IP address is the machine running the bridge — `127.0.0.1` if that is the same machine.
+
+4. Download the program to the runtime and start it.
+
+    The trainer's label changes from *BRIDGE ONLY — NO PLC* to *PLC POLLING*.
+
+With the provided project running, the next section is not needed. Continue at **Verify the connection**.
+
+### Configuring the PLC yourself
 
 1. Add a **Modbus TCP Client** device under the Ethernet adapter in your device tree.
 
@@ -102,7 +129,11 @@ Addresses are given in conventional 1-based Modbus notation. CODESYS channel con
 | The bridge reports a permission error on startup | Port 502 is privileged on macOS and Linux. Run the bridge with elevated privileges, or remap the port if the build supports it. |
 | The trainer's label stays on internal mode after pressing EXTERNAL PLC | The trainer cannot reach the bridge. Confirm the bridge is running and that no local firewall or browser policy is blocking the connection. |
 | The label reads BRIDGE ONLY — NO PLC and does not change | The PLC is not polling. Confirm the program is downloaded and running, the client's IP and port are correct, and the device is a Modbus TCP Client rather than the legacy Master. |
+| CODESYS will not open the provided project | The project was saved in a later version than the installed one. Install {CODESYS version} or later. |
+| A device in the tree appears unresolved or missing | The Modbus TCP Client device package is not installed. Install it and reopen the project. |
+| CODESYS reports no gateway, or cannot find the device | The project is still bound to the machine it was built on. Double-click **Device**, select **Scan network**, and choose the local Control Win V3 instance. |
 | CODESYS reports the client is offline or times out | Wrong IP address, a firewall blocking port 502, or the bridge not running. Check in that order. |
+| The runtime stops after a period of operation | An unlicensed CODESYS Control Win V3 runtime stops at the end of its demo period and must be restarted. |
 | Values are all zero, or every signal is shifted by one address | 0-based versus 1-based register addressing. See the note under the register map. |
 | Coils are written but the bench does not respond | The trainer must be in Operate mode. Also check the output module's power connections — a correctly addressed coil into an unpowered module does nothing. |
 | The connection drops mid-session | The bridge terminal was closed, the machine slept, or the network path changed. Restart the bridge and press EXTERNAL PLC again. |
