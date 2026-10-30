@@ -85,7 +85,7 @@ The trainer is designed for **students, new technicians, integrators, and Weinte
 
 - **Wiring mode:** Select terminals and make connections. Double-click a terminal when you need a closer view.
 - **Operate mode:** Interact with devices such as the push button and observe how the circuit responds.
-- **CHECK WIRING:** If a guided step does not complete, use this control to see what the circuit is missing.
+- **Check Wiring:** If a guided step does not complete, use this control to see what the circuit is missing.
 
 ## System requirements
 
