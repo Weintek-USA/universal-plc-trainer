@@ -1,3 +1,4 @@
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/46ecea47-a22f-4072-a9bc-26a1b6759014" alt="Weintek logo" width="96" />
 </p>
@@ -23,6 +24,7 @@
 <p align="center">
   <a href="#quick-start"><strong>Quick start</strong></a> &nbsp;·&nbsp;
   <a href="#what-you-can-learn">What you'll learn</a> &nbsp;·&nbsp;
+  <a href="#browser-compatibility">Browser compatibility</a> &nbsp;·&nbsp;
   <a href="#connect-to-a-real-plc">PLC connection</a> &nbsp;·&nbsp;
   <a href="#troubleshooting">Troubleshooting</a> &nbsp;·&nbsp;
   <a href="#support-and-feedback">Get help</a>
@@ -56,11 +58,11 @@ It teaches how PLC inputs and outputs connect to push buttons, sensors, transmit
 
 ## Quick start
 
-**No installation, administrator access, network connection, or physical PLC is required for the built-in simulation.**
+**No installation, admin access, network connection, or physical PLC is required for the built-in simulation.**
 
 <!-- Add an official download URL here when available. -->
 
-1. **Download the trainer files.** Obtain `trainer.html` and `trainer.js` from the release package. (Use the actual filenames supplied with your build.)
+1. **Download the trainer files.** Find `trainer.html` and `trainer.js` from the release package. (Use the actual filenames supplied with your build.)
 2. **Keep both files together.** Save them in the same folder without changing their names. The HTML file loads the JavaScript file from alongside it.
 3. **Open the trainer.** Double-click the HTML file, or right-click it and select **Open with** to choose a different browser.
 4. **Choose an exercise.** Once the 3D workstation appears, open the exercise library in the learning panel. Start with **Exercise 1** for the recommended introduction.
@@ -92,11 +94,33 @@ The trainer is designed for **students, new technicians, integrators, and Weinte
 | Required for the built-in trainer | Details |
 | :--- | :--- |
 | **Trainer files** | The HTML and JavaScript files supplied with the release, kept in the same folder. |
-| **Browser** | A modern browser with WebGL enabled. Supported browsers and minimum versions will be confirmed for release. |
+| **Browser** | A modern browser with WebGL enabled. See [Browser compatibility](#browser-compatibility) for tested environments. |
 | **Graphics** | WebGL must be available. A dedicated graphics card is not required, but performance and availability depend on browser and device settings. |
 | **Network and hardware** | No network connection, PLC hardware, or administrator rights are required for local use. |
 
 **Virtual machines and remote desktops:** These may work, but their graphics configurations can restrict WebGL. If the workstation is blank, check the troubleshooting guidance below.
+
+## Browser compatibility
+
+The **Universal Virtual PLC Trainer** has been tested with the following desktop browsers for the V1 release:
+
+| Browser | Verification status | Test environment |
+| :--- | :--- | :--- |
+| **Google Chrome** | ✅ Tested successfully | Windows PC |
+| **Microsoft Edge** | ✅ Tested successfully | Windows PC |
+| **Mozilla Firefox** | ✅ Tested successfully | Windows PC |
+| **Safari (macOS)** | ✅ Tested successfully | BrowserStack |
+
+**Recommended:** Use a current stable version of Chrome, Edge, Firefox, or Safari with WebGL available. Hardware-accelerated graphics are recommended for smoother interaction with the 3D workstation.
+
+> [!NOTE]
+> **Testing scope:** Browser compatibility information is based on third-party research and internal testing. While older browser versions may support WebGL, compatibility with the Universal PLC Trainer has not been verified. Hardware acceleration is recommended for optimal performance.
+
+
+[!NOTE]
+
+> 
+Browser compatibility information is based on Can I Use — WebGL and internal testing. While older browser versions may support WebGL, compatibility with the Universal PLC Trainer has not been verified. Hardware acceleration is recommended for optimal performance.
 
 ## Connect to a real PLC
 
@@ -111,7 +135,6 @@ This connection uses a separate bridge because browser pages cannot open raw Mod
 - **CODESYS V3.5 SP21 Patch 6+** with the **CODESYS Control Win V3 x64** runtime and **Modbus TCP Client** device package
 
 The bridge setup, register map, CODESYS configuration, and verification steps are documented in the [Connect to a PLC guide](how-to_connect-plc.md).
-
 
 > [!IMPORTANT]
 > The bridge and PLC software are **optional**. You can complete the built-in training exercises without either one.
@@ -140,13 +163,13 @@ For additional guidance, consult the getting-started guide or contact support be
 
 | Resource | Contents |
 | :--- | :--- |
-| **Getting-started guide** | Open the trainer, understand the interface, and complete your first exercise. |
-| **PLC connection guide** (`how-to_connect-a-plc.md`) | Bridge setup, Modbus TCP mapping, CODESYS configuration, and verification. *In preparation.* |
-| **System requirements** | Confirmed browser and platform compatibility. *To be finalized.* |
+| [Getting-started guide](how-to_get-started.md) | Open the trainer, understand the interface, and complete your first exercise. |
+| [PLC connection guide](how-to_connect-plc.md) | Bridge setup, Modbus TCP mapping, CODESYS configuration, and verification. |
+| [Browser compatibility](#browser-compatibility) | Tested browsers, graphics requirements, and current validation scope. |
 | **Known simplifications and scope** | What the simulation models and what it intentionally simplifies. *To be linked.* |
 | **System tab (inside the trainer)** | Glossary, I/O address map, and an explanation of how the simulation works. |
 
-<!-- Link the guide titles above when the corresponding files or pages exist. -->
+<!-- Add links to future documentation when those guides are published. -->
 
 ## Support and feedback
 
@@ -156,7 +179,7 @@ Questions, suggestions, and defect reports help improve the trainer. Because thi
 - **Direct support:** [arden-yazici@weintekusa.com](mailto:arden-yazici@weintekusa.com)
 - **Additional help:** FAQ and getting-started guide (links to be added)
 
-Support for this free product includes installation and startup issues, defect reports, and questions about using the trainer and its exercises. When reporting a problem, describe **what you did, what you expected, and what happened**. If relevant, include the bridge's startup output and a screenshot of the trainer's **PLC & I/O** tab.
+Support for this free product includes installation and startup issues, defect reports, and questions about using the trainer and its exercises. 
 
 ## Terms of use
 
