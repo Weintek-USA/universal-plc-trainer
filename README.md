@@ -110,7 +110,8 @@ This connection uses a separate bridge because browser pages cannot open raw Mod
 - **Node.js 22 or later** — to run the bridge
 - **CODESYS V3.5 SP21 Patch 6+** with the **CODESYS Control Win V3 x64** runtime and **Modbus TCP Client** device package
 
-The bridge setup, register map, CODESYS configuration, and verification steps will be documented in `how-to_connect-a-plc.md` (guide in preparation).
+The bridge setup, register map, CODESYS configuration, and verification steps are documented in the [Connect to a PLC guide](how-to_connect-plc.md).
+
 
 > [!IMPORTANT]
 > The bridge and PLC software are **optional**. You can complete the built-in training exercises without either one.
