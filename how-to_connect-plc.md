@@ -6,17 +6,15 @@ This guide explains how to connect the Universal Virtual PLC Trainer to a real P
 
 In this mode the trainer stops simulating its own PLC program. Wiring still determines what the PLC reads, and the downloaded program determines what the outputs do.
 
-Connecting a PLC for the first time takes about 30 minutes, most of it CODESYS configuration.
-
 ## Before you start
 
 Before you connect a PLC, make sure you have:
 
 * The trainer running in its normal mode, with at least one exercise completed
-* `universal-plc-trainer-bridge-v{#}.js`, the bridge service
+* `universal-plc-trainer-bridge-v1.js`, the bridge service
 * Node.js 22 or later, to run the bridge — check with `node --version`
 * CODESYS V3.5 SP21 Patch 6 or later, with the CODESYS Control Win V3 x64 runtime and the Modbus TCP Client device package installed
-* Optional: `{universal-plc-trainer-codesys-v#.project}`, the provided CODESYS project, which replaces most of the configuration below
+* Optional: `{universal-plc-trainer-codesys-v1.project}`, the provided CODESYS project, which replaces most of the configuration below
 * TCP port 502 free on the machine running the bridge
 
 ### Why a bridge service is needed
@@ -36,7 +34,7 @@ CODESYS is therefore configured as a client, not a server, and the bridge must b
 2. Run the bridge.
 
     ```
-    node universal-plc-trainer-bridge-v{#}.js
+    node universal-plc-trainer-bridge-v1.js
     ```
 
     It prints the register map and begins listening on TCP port 502. Leave this terminal open; closing it stops the bridge and drops the connection.
@@ -51,11 +49,11 @@ Use either the provided CODESYS project or a project you configure yourself. Bot
 
 ### Using the provided CODESYS project
 
-`{universal-plc-trainer-codesys-v#.project}` contains the Modbus TCP Client device, its channels mapped to the register map below, and a short program that drives DO0 from DI0.
+`{universal-plc-trainer-codesys.project}` contains the Modbus TCP Client device, its channels mapped to the register map below, and a short program that drives DO0 from DI0.
 
 1. Open the project file in CODESYS.
 
-    It was saved in {CODESYS version}. A later version prompts to update the project; accept the prompt. An earlier version cannot open it.
+    It was saved in CODESYS 3.5 SP21 Patch 6 (64 bit). A later version prompts to update the project; accept the prompt. An earlier version cannot open it.
 
 2. Bind the project to your runtime.
 
@@ -138,7 +136,7 @@ Addresses are given in conventional 1-based Modbus notation. CODESYS channel con
 | Coils are written but the bench does not respond | The trainer must be in Operate mode. Also check the output module's power connections — a correctly addressed coil into an unpowered module does nothing. |
 | The connection drops mid-session | The bridge terminal was closed, the machine slept, or the network path changed. Restart the bridge and press EXTERNAL PLC again. |
 
-For anything not listed, report what you did, what you expected, and what happened to the support contact in the README. Include the bridge's startup output and a screenshot of the trainer's **PLC & I/O** tab.
+For issues not covered above, please contact the support representative listed in the README. If helpful, please include the bridge's startup output and a screenshot of the trainer's **PLC & I/O** tab.
 
 ## See also
 
