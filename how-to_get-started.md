@@ -196,7 +196,7 @@ Expand the category that best matches what you're seeing.
 | :--- | :--- |
 | [Project README](README.md) | Product overview, requirements, support, and feedback. |
 | [Connect the trainer to a PLC](how-to_connect-a-plc.md) | Optional bridge setup, Modbus TCP communication, and CODESYS configuration. |
-| **System requirements** *(guide pending)* | Supported browsers and minimum versions. |
+| [Browser compatibility and system requirements](README.md#browser-compatibility) | Tested browsers, WebGL requirements, and current compatibility limitations. |
 | **Known simplifications and scope** *(guide pending)* | What the trainer models and what it deliberately does not. |
 | **System tab (inside the trainer)** | Glossary, I/O address map, and simulation behavior. |
 
