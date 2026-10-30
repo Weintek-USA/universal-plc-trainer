@@ -35,16 +35,12 @@ PRE-PUBLISH CHECKLIST (remember to remove this comment before release):
   <a href="#see-also">More guides</a>
 </p>
 
-<!-- OPTIONAL WORKSTATION SCREENSHOT:
-When a current, approved screenshot is available, commit it to the repository and add:
-
 <p align="center">
-  <img src="docs/assets/trainer-workstation.png" alt="3D training workstation with a power supply, PLC I/O modules, push button, and pilot light" width="900" />
+  <a href="docs/assets/trainer-workstation-exercise1.png">
+    <img src="docs/assets/trainer-workstation-exercise1.png" alt="3D training workstation with a power supply, PLC I/O modules, push button, and pilot light" width="650" />
+  </a>
 </p>
-<p align="center"><sub>Exercise 1: wire the workstation and test the push button and pilot light.</sub></p>
-
-Update the image path if your docs folder is elsewhere.
--->
+<p align="center"><sub>Figure 1. Universal PLC Trainer workstation with Exercise 1 selected. The learning panel guides students through wiring the 24 VDC power supply to the terminal block.</sub></p>
 
 ---
 
