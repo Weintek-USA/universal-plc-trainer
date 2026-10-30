@@ -116,12 +116,6 @@ The **Universal Virtual PLC Trainer** has been tested with the following desktop
 > [!NOTE]
 > **Testing scope:** Browser compatibility information is based on third-party WebGL research and internal testing. While older browser versions may support WebGL, compatibility with the Universal PLC Trainer has not been verified. Hardware acceleration is recommended for optimal performance.
 
-
-[!NOTE]
-
-> 
-Browser compatibility information is based on Can I Use — WebGL and internal testing. While older browser versions may support WebGL, compatibility with the Universal PLC Trainer has not been verified. Hardware acceleration is recommended for optimal performance.
-
 ## Connect to a real PLC
 
 For a more advanced workflow, the trainer can exchange its I/O with a real PLC runtime. In this mode, **your PLC program reads the virtual bench inputs and controls its outputs**, rather than the trainer's built-in logic handling them.
