@@ -200,8 +200,8 @@ For any other issue, contact the support representative listed in the main `READ
 | Resource | Purpose |
 | :--- | :--- |
 | [Getting-started guide](how-to_get-started.md) | Open the trainer and complete your first exercise. |
-| `README.md` | Product overview, support contact, and general requirements. |
-| [Browser compatibility](#browser-compatibility) | Supported browsers and minimum versions. |
+| [Application README](README.md) | Product overview, support contact, and general requirements. |
+| [Browser Compatibility](README.md#browser-compatibility) | Supported browsers and minimum versions. |
 | **Known simplifications and scope** *(link to be added)* | What the trainer models and what it intentionally simplifies. |
 | **System tab (inside the trainer)** | Glossary, I/O address map, and simulation behavior. |
 
