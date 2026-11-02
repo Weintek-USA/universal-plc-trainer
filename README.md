@@ -177,11 +177,7 @@ Support for this free product includes installation and startup issues, defect r
 
 ## Terms of use
 
-**All rights reserved.** Licensing terms are pending review and have not yet been finalized.
+**All rights reserved.** Licensing is not yet determined; all rights reserved pending review.
 
 
 Support for this free product covers installation and startup problems, defect reports, and questions about using the trainer and its exercises. Use any of the contacts above.
-
-## Terms of use
-
-Licensing is not yet determined; all rights reserved pending review.
