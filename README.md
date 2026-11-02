@@ -62,7 +62,7 @@ It teaches how PLC inputs and outputs connect to push buttons, sensors, transmit
 
 <!-- Add an official download URL here when available. -->
 
-1. **Download the trainer files.** Find `trainer.html` and `trainer.js` from the release package. (Use the actual filenames supplied with your build.)
+1. **Download the trainer files.** Find `trainer.html` and `trainer.js` from the Github release folder. 
 2. **Keep both files together.** Save them in the same folder without changing their names. The HTML file loads the JavaScript file from alongside it.
 3. **Open the trainer.** Double-click the HTML file, or right-click it and select **Open with** to choose a different browser.
 4. **Choose an exercise.** Once the 3D workstation appears, open the exercise library in the learning panel. Start with **Exercise 1** for the recommended introduction.
