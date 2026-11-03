@@ -56,7 +56,7 @@ A browser cannot open the raw TCP socket required for this connection, and the P
 | Requirement | Details |
 | :--- | :--- |
 | **Virtual PLC Trainer** | Open in its normal mode, with at least one exercise completed. |
-| **Bridge service** | `universal-plc-trainer-bridge-v1.js` |
+| **Bridge service** | `trainer-bridge.js`, from the [latest release](../../releases/latest). No dependencies to install. |
 | **Node.js** | Version **22 or later**. Verify with `node --version`. |
 | **CODESYS** | **V3.5 SP21 Patch 6 or later** and the **CODESYS Control Win V3 x64** runtime. |
 | **Device package** | The **Modbus TCP Client** device package must be installed in CODESYS. |
@@ -68,15 +68,31 @@ A browser cannot open the raw TCP socket required for this connection, and the P
 
 ## Start the bridge service
 
-**1. Open a terminal** in the folder containing `universal-plc-trainer-bridge-v1.js`.
+**1. Open a terminal** in the folder containing `trainer-bridge.js`.
+
+In VS Code: **File → Open Folder…**, select the folder holding the file, then open a terminal with
+**Terminal → New Terminal** (`` Ctrl+` ``). It starts in that folder already.
 
 **2. Run the bridge:**
 
 ```bash
-node universal-plc-trainer-bridge-v1.js
+node trainer-bridge.js
 ```
 
 The bridge prints its register map and starts listening on **port 502**. **Keep the terminal open:** closing it stops the bridge and disconnects the PLC.
+
+> [!NOTE]
+> **macOS and Linux reserve port 502 for administrators.** If the bridge exits with
+> `listen EACCES: permission denied`, start it on a higher port and point the PLC at that port
+> instead — the bridge prints this suggestion itself:
+> ```bash
+> node trainer-bridge.js --modbus-port 5020
+> ```
+> Windows has no such restriction.
+
+> [!TIP]
+> To check the bridge before involving a PLC, run `node trainer-bridge.js --demo`. It invents a
+> moving set of inputs so you can watch values change with no browser or PLC attached.
 
 **3. Connect the trainer to the bridge.** Open the trainer and select **EXTERNAL PLC**.
 
@@ -84,9 +100,15 @@ The status should now display **BRIDGE ONLY — NO PLC**. This means the trainer
 
 | Trainer status | Meaning |
 | :--- | :--- |
-| **Internal mode** | The trainer uses its built-in PLC simulation. |
+| **NO BRIDGE** | External mode is on, but the trainer cannot reach the bridge. Check that the bridge is still running in its terminal. |
 | **BRIDGE ONLY — NO PLC** | The bridge is connected, but no PLC is polling yet. |
 | **PLC POLLING** | A PLC is communicating with the bridge. |
+
+> [!NOTE]
+> The bridge's startup banner mentions `http://localhost:8080/`. Opening it shows
+> *"bridge-client.html is not next to trainer-bridge.js"*, which is expected and harmless — that
+> address serves an internal test page which is not part of this release. Use
+> `universal-plc-trainer.html` as your trainer.
 
 ## Configure the PLC in CODESYS
 
@@ -123,7 +145,7 @@ The optional example project, `{universal-plc-trainer-codesys-v1.project}`, incl
 | :--- | :--- | :--- | :--- |
 | `10001–10004` | Discrete input | **DI0–DI3** | PLC reads |
 | `30001–30002` | Input register | **AI0–AI1** (raw counts) | PLC reads |
-| `00001–00002` | Coil | **DO0–DO1** | PLC writes |
+| `00001–00004` | Coil | **DO0–DO1**, plus **DO2–DO3** (spare) | PLC writes |
 | `40001` | Holding register | **AO0** (reserved) | Not used in this version |
 
 **Analog inputs:** AI0 and AI1 are provided as **raw counts**, not engineering units. Scale them in the PLC program using the trainer's documented scale, just as you would with a physical analog module.
@@ -163,8 +185,8 @@ If the setup does not behave as expected, expand the relevant section.
 | :--- | :--- |
 | **The bridge exits with a version or syntax error.** | Node.js may be older than **22**. Check `node --version` and update if needed. |
 | **The address or port is already in use.** | Another process, such as a Modbus tool or a previous bridge instance, is holding **TCP port 502**. Close that process and restart the bridge. |
-| **The bridge reports a permission error on startup.** | Port **502** is privileged on macOS and Linux. Use an appropriately authorized environment or remap the port if the build supports it. |
-| **The trainer stays in internal mode after selecting EXTERNAL PLC.** | It cannot reach the bridge. Confirm the bridge is running and check local firewall or browser restrictions. |
+| **The bridge reports a permission error on startup.** | Port **502** is privileged on macOS and Linux. Start the bridge with `--modbus-port 5020` and point the PLC at that port instead. Windows is unaffected. |
+| **The trainer shows NO BRIDGE after selecting EXTERNAL PLC.** | It cannot reach the bridge. Confirm the bridge is still running in its terminal, then check local firewall or browser restrictions. |
 | **The trainer stays on BRIDGE ONLY — NO PLC.** | The PLC is not polling. Verify that the program is running, IP/port settings are correct, and the device is **Modbus TCP Client**, not the legacy Master. |
 | **The connection drops during use.** | The bridge terminal may have closed, the computer may have slept, or the network path may have changed. Restart the bridge and select **EXTERNAL PLC** again. |
 
@@ -208,4 +230,3 @@ For any other issue, contact the support representative listed in the main `READ
 ---
 
 <p align="center"><sub>Universal Virtual PLC Trainer · Published by <strong>Weintek USA</strong></sub></p>
-
