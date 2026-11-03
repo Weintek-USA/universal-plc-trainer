@@ -104,12 +104,6 @@ The status should now display **BRIDGE ONLY — NO PLC**. This means the trainer
 | **BRIDGE ONLY — NO PLC** | The bridge is connected, but no PLC is polling yet. |
 | **PLC POLLING** | A PLC is communicating with the bridge. |
 
-> [!NOTE]
-> The bridge's startup banner mentions `http://localhost:8080/`. Opening it shows
-> *"bridge-client.html is not next to trainer-bridge.js"*, which is expected and harmless — that
-> address serves an internal test page which is not part of this release. Use
-> `universal-plc-trainer.html` as your trainer.
-
 ## Configure the PLC in CODESYS
 
 Choose **one** of the two setup paths below. Both end with the PLC polling the bridge.
@@ -215,7 +209,7 @@ If the setup does not behave as expected, expand the relevant section.
 
 </details>
 
-For any other issue, contact the support representative listed in the main `README.md`. If possible, attach the **bridge's startup output** and a screenshot of the trainer's **PLC & I/O** tab.
+For any other issue, contact the support representative listed in the main `README.md`. Include **what you did, what you expected, and what happened**. If possible, attach the **bridge's startup output** and a screenshot of the trainer's **PLC & I/O** tab.
 
 ## See also
 
