@@ -1,7 +1,5 @@
 <!--
 PRE-PUBLISH CHECKLIST (remove before release):
-- Confirm product naming matches README.md and the trainer interface.
-- Confirm universal-plc-trainer.html and trainer-bridge.js match release filenames.
 - Verify the GitHub Releases link and the workstation screenshot path.
 - Verify all control labels and exercise details against the V1 release build.
 - Confirm the current saved-progress behavior described below.
