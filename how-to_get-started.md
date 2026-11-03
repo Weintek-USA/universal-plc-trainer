@@ -61,8 +61,8 @@ The trainer runs **locally in a web browser** using two files on your computer. 
 
 | Requirement | What you need |
 | :--- | :--- |
-| **Trainer files** | `{trainer.html}` and `{trainer.js}`, kept **together in the same folder**. |
-| **Web browser** | `{Chrome / Edge / Firefox / Safari, minimum versions}` — confirmed versions will be inserted for release. |
+| **Trainer files** | `universal-plc-trainer.html` and `trainer-bridge.js`, kept **together in the same folder**. If you are not connecting to a PLC, you will not need to run the trainer-bridge.js file. |
+| **Web browser** | `Chrome, Firefox, Edge, or Safari` |
 | **3D graphics** | A computer and browser with **WebGL** available. |
 
 **Not required:** Administrator rights, CODESYS, physical PLC hardware, a network connection, or a separate installation.
