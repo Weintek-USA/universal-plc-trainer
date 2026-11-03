@@ -215,7 +215,7 @@ If the setup does not behave as expected, expand the relevant section.
 
 </details>
 
-For any other issue, contact the support representative listed in the main `README.md`. Include **what you did, what you expected, and what happened**. If possible, attach the **bridge's startup output** and a screenshot of the trainer's **PLC & I/O** tab.
+For any other issue, contact the support representative listed in the main `README.md`. If possible, attach the **bridge's startup output** and a screenshot of the trainer's **PLC & I/O** tab.
 
 ## See also
 
