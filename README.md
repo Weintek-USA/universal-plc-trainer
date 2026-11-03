@@ -1,4 +1,3 @@
-
 <p align="center">
   <img src="https://github.com/user-attachments/assets/46ecea47-a22f-4072-a9bc-26a1b6759014" alt="Weintek logo" width="96" />
 </p>
@@ -12,7 +11,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Version-V1-022E68?style=flat-square" alt="Version V1" />
-  <img src="https://img.shields.io/badge/Guided_exercises-5-0078F8?style=flat-square" alt="5 guided exercises" />
+  <img src="https://img.shields.io/badge/Guided_exercises-6-0078F8?style=flat-square" alt="6 guided exercises" />
   <img src="https://img.shields.io/badge/Fault_scenarios-9-022E68?style=flat-square" alt="9 diagnostic scenarios" />
   <img src="https://img.shields.io/badge/Hardware-Not_required-0078F8?style=flat-square" alt="No physical hardware required" />
 </p>
@@ -51,7 +50,7 @@ It teaches how PLC inputs and outputs connect to push buttons, sensors, transmit
 
 | Build circuits | Learn by doing | Find the fault |
 | :--- | :--- | :--- |
-| Connect terminals, supply rails, and field devices in a 3D workstation. | Work through **5 guided exercises** spanning digital and analog I/O. | Solve **9 diagnostic scenarios**, each with a hidden wiring fault. |
+| Connect terminals, supply rails, and field devices in a 3D workstation. | Work through **6 guided exercises** spanning digital and analog I/O. | Solve **9 diagnostic scenarios**, each with a hidden wiring fault. |
 
 > [!NOTE]
 > This is an educational simulation. It models selected electrical behaviors and wiring hazards; it does not replace approved safety procedures or hands-on training with supervised equipment.
@@ -60,14 +59,22 @@ It teaches how PLC inputs and outputs connect to push buttons, sensors, transmit
 
 **No installation, admin access, network connection, or physical PLC is required for the built-in simulation.**
 
-<!-- Add an official download URL here when available. -->
+1. **Download `universal-plc-trainer.html`** from the [latest release](../../releases/latest). Use the release page, not the file view in the repository — GitHub serves `.html` files as plain text, so a link from the file list shows you the source code instead of the trainer.
+2. **Open it.** Double-click the file, or right-click and choose **Open with** to pick a different browser.
+3. **Choose an exercise.** When the 3D workstation appears, open the exercise library in the learning panel and start with **Exercise 1 — Wire a push button and light**.
 
-1. **Download the trainer files.** Find `universal-plc-trainer.html` and `trainer.js` from the Github release folder. 
-2. **Keep both files together.** Save them in the same folder without changing their names. The HTML file loads the JavaScript file from alongside it.
-3. **Open the trainer.** Double-click the HTML file, or right-click it and select **Open with** to choose a different browser.
-4. **Choose an exercise.** Once the 3D workstation appears, open the exercise library in the learning panel. Start with **Exercise 1** for the recommended introduction.
+That is the whole setup. The trainer is a single self-contained file: everything it needs, including its fonts and 3D engine, is inside it, so it runs offline and you can rename it or move it anywhere.
 
 All exercises are available from the start; there are no locked levels or prerequisites.
+
+### Where to go next
+
+| If you want to… | Go to |
+| :--- | :--- |
+| Open the trainer and work through your first circuit, step by step | [Getting-started guide](how-to_get-started.md) |
+| Launch it from **VS Code** instead of double-clicking | [Getting started → Open the trainer](how-to_get-started.md#open-the-trainer) |
+| Run your own PLC program against the virtual bench | [Connect to a PLC](how-to_connect-plc.md) |
+| Check whether your browser is supported | [Browser compatibility](#browser-compatibility) |
 
 **What you'll see:** A mounting panel with a power supply, PLC input and output modules, a terminal block, a push button, and a pilot light.
 
@@ -77,7 +84,7 @@ All exercises are available from the start; there are no locked levels or prereq
 
 | Learning mode | What to expect |
 | :--- | :--- |
-| **5 guided exercises** | Build from basic digital I/O to 4–20 mA and 0–10 V analog measurement, sensor wiring, and Start/Stop seal-in motor control. |
+| **6 guided exercises** | Build from basic digital I/O to 4–20 mA and 0–10 V analog measurement, sensor wiring, and Start/Stop seal-in motor control, then troubleshoot a loose connection. |
 | **9 diagnostic scenarios** | Inspect a pre-wired bench, interpret the symptoms, and find a hidden fault. |
 | **Independent exploration** | Experiment with wiring and I/O behavior without physical hardware. |
 
@@ -93,7 +100,7 @@ The trainer is designed for **students, new technicians, integrators, and Weinte
 
 | Required for the built-in trainer | Details |
 | :--- | :--- |
-| **Trainer files** | The HTML and JavaScript files supplied with the release, kept in the same folder. |
+| **Trainer file** | `universal-plc-trainer.html` — one self-contained file. Nothing else is needed, and it can be renamed or moved freely. |
 | **Browser** | A modern browser with WebGL enabled. See [Browser compatibility](#browser-compatibility) for tested environments. |
 | **Graphics** | WebGL must be available. A dedicated graphics card is not required, but performance and availability depend on browser and device settings. |
 | **Network and hardware** | No network connection, PLC hardware, or administrator rights are required for local use. |
@@ -124,7 +131,7 @@ This connection uses a separate bridge because browser pages cannot open raw Mod
 
 **Additional requirements for external PLC mode:**
 
-- `universal-plc-trainer-bridge.js` — the bridge service
+- `trainer-bridge.js` — the bridge service, from the same release
 - **Node.js 22 or later** — to run the bridge
 - **CODESYS V3.5 SP21 Patch 6+** with the **CODESYS Control Win V3 x64** runtime and **Modbus TCP Client** device package
 
@@ -142,16 +149,16 @@ If something doesn't work as expected, open the common issues below.
 
 | Issue | What to try |
 | :--- | :--- |
-| **The page loads, but the workstation is blank.** | Confirm the HTML and JavaScript files are together and have their original filenames. Reload the page. |
-| **The browser reports that 3D graphics are unavailable.** | Verify that WebGL is enabled. Try another supported browser, or check graphics policies and remote-desktop settings. |
-| **Wires will not connect.** | Switch to **Wiring** mode and click a terminal, not the surrounding panel. Double-click a terminal to zoom in first. |
-| **A guided step will not complete.** | Press **CHECK WIRING** to review missing connections, especially the supply rails. |
-| **The push button does nothing.** | Switch to **Operate** mode. Check the output module's power wiring and the pilot light's return to 0 V. |
-| **Progress disappears after reloading.** | This is expected in V1; progress persistence has not been implemented. |
+| **The browser shows a wall of code instead of the trainer.** | The file was opened from a repository link rather than downloaded. Get it from the [latest release](../../releases/latest) and save it to your computer first. |
+| **The page loads, but the workstation is blank.** | WebGL is unavailable or blocked. Try another supported browser; see [Browser compatibility](#browser-compatibility). |
+| **The trainer will not open at all.** | Make sure the download finished — the file is about 1 MB. A truncated download shows a blank or broken page. |
 
 </details>
 
-For additional guidance, consult the getting-started guide or contact support below.
+Everything else is covered where it belongs: wiring, exercises and the 3D view in the
+[getting-started guide](how-to_get-started.md#troubleshooting), and the bridge, Modbus and CODESYS
+in the [PLC connection guide](how-to_connect-plc.md#troubleshooting). If neither helps, contact
+support below.
 
 ## Documentation
 
