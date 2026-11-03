@@ -1,13 +1,13 @@
 <!--
-PRE-PUBLISH CHECKLIST (remember to remove this comment before release):
-- Confirm the final product name against the main README and trainer interface.
-- Replace {trainer.html} and {trainer.js} with the exact distributed filenames.
-- Confirm supported browser names and minimum versions; replace the placeholder below.
-- Add an actual 3D workstation screenshot where indicated (and commit it to the repo).
-- Check that the sibling README.md and how-to_connect-a-plc.md links resolve from this guide's location.
-- Verify the exercise button and tab labels against the release build.
-- Replace the placeholder titles for any future documentation when those pages are published.
+PRE-PUBLISH CHECKLIST (remove before release):
+- Confirm product naming matches README.md and the trainer interface.
+- Confirm universal-plc-trainer.html and trainer-bridge.js match release filenames.
+- Verify the GitHub Releases link and the workstation screenshot path.
+- Verify all control labels and exercise details against the V1 release build.
+- Confirm the current saved-progress behavior described below.
+- Replace pending documentation references when those guides are published.
 -->
+
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/46ecea47-a22f-4072-a9bc-26a1b6759014" alt="Weintek logo" width="96" />
@@ -37,9 +37,10 @@ PRE-PUBLISH CHECKLIST (remember to remove this comment before release):
 
 <p align="center">
   <a href="docs/assets/trainer-workstation-exercise1.png">
-    <img src="docs/assets/trainer-workstation-exercise1.png" alt="3D training workstation with a power supply, PLC I/O modules, push button, and pilot light" width="650" />
+    <img src="docs/assets/trainer-workstation-exercise1.png" alt="Universal PLC Trainer 3D workstation with Exercise 1 selected, showing a power supply, PLC modules, and learning panel" width="650" />
   </a>
 </p>
+
 <p align="center"><sub>Figure 1. Universal PLC Trainer workstation with Exercise 1 selected. The learning panel guides students through wiring the 24 VDC power supply to the terminal block.</sub></p>
 
 ---
@@ -48,52 +49,76 @@ PRE-PUBLISH CHECKLIST (remember to remove this comment before release):
 
 This guide walks you through **Exercise 1** of the **Universal PLC Trainer by Weintek**: wire a push button to a PLC input and a pilot light to a PLC output, then press the button to turn on the light.
 
-The trainer runs **locally in a web browser** using two files on your computer. You do **not** need a physical PLC, CODESYS, an installer, an internet connection, or industrial equipment. The trainer uses its **built-in PLC simulation** for all steps in this guide.
+The trainer runs **locally in a web browser** from a single file on your computer. You do **not** need a physical PLC, CODESYS, an installer, an internet connection, or industrial equipment. The trainer uses its **built-in PLC simulation** for all steps in this guide.
 
 | 1. Open | 2. Wire | 3. Operate |
 | :--- | :--- | :--- |
 | Launch the 3D workstation and select **Exercise 1**. | Connect the 24 V supply, push button, PLC I/O, and pilot light. | Check your wiring, press the button, and watch the I/O respond. |
 
 > [!NOTE]
-> **This is the standalone training route.** External PLC mode is optional and is covered separately in [Connect the trainer to a PLC](how-to_connect-a-plc.md).
+> **This is the standalone training route.** External PLC mode is optional and is covered separately in [Connect the trainer to a PLC](how-to_connect-plc.md).
 
 ## Before you start
 
 | Requirement | What you need |
 | :--- | :--- |
-| **Trainer files** | `universal-plc-trainer.html` and `trainer-bridge.js`, kept **together in the same folder**. If you are not connecting to a PLC, you will not need to run the trainer-bridge.js file. |
-| **Web browser** | `Chrome, Firefox, Edge, or Safari` |
-| **3D graphics** | A computer and browser with **WebGL** available. |
+| **Trainer file** | `universal-plc-trainer.html` from the [latest release](../../releases/latest). No companion files are needed for standalone use. |
+| **Web browser** | A current version of Chrome, Edge, Firefox, or Safari. See [Browser compatibility](README.md#browser-compatibility) for testing details. |
+| **3D graphics** | A browser and device with **WebGL** available. Hardware acceleration is recommended. |
 
 **Not required:** Administrator rights, CODESYS, physical PLC hardware, a network connection, or a separate installation.
 
-> [!IMPORTANT]
-> **Keep the supplied filenames unchanged.** The HTML file loads the JavaScript file by name from the same folder. Renaming or separating the files prevents the trainer from loading.
+> [!NOTE]
+> **The trainer is one self-contained HTML file.** It includes the 3D engine, fonts, and exercises. You can move or rename it without breaking standalone mode. The optional `trainer-bridge.js` is used only for [connecting to a real PLC](how-to_connect-plc.md); it is not required for these exercises.
 
 ## Open the trainer
 
-**1. Save the trainer files.** Put `{trainer.html}` and `{trainer.js}` in the same folder on your computer.
+Choose either method below. **Option A** is recommended for most students; **Option B** is optional for those using VS Code.
 
-**2. Launch the workstation.** Double-click the HTML file to open it in your default browser. To use another browser, right-click the file and choose **Open with**.
+<details open>
+<summary><strong>Option A — Open the HTML file directly (recommended)</strong></summary>
 
-**3. Wait for the 3D workstation.** You should see a mounting panel with a power supply, a PLC and its input/output modules, a terminal block, a push button, and a pilot light. If the workstation is blank, see [Troubleshooting](#troubleshooting).
+1. **Save the trainer.** Download `universal-plc-trainer.html` from the [latest release](../../releases/latest) and save it anywhere on your computer, such as `Documents/plc-trainer`.
+2. **Launch the workstation.** Double-click the HTML file to open it in your default browser. To use another browser, right-click the file and choose **Open with**.
 
-**4. Get familiar with the controls.**
+</details>
+
+<details>
+<summary><strong>Option B — Open through VS Code and Live Server</strong></summary>
+
+This method is optional and can be useful if your course already uses VS Code.
+
+1. **Save the file** in a folder on your computer, such as `Documents/plc-trainer`.
+2. **Open the folder in VS Code.** Select **File → Open Folder**, then choose the folder containing the trainer.
+3. **Install Live Server** if it is not already installed. Open Extensions with `Ctrl+Shift+X` (`Cmd+Shift+X` on macOS), search for **Live Server**, and install it.
+4. **Launch the trainer.** Right-click `universal-plc-trainer.html` in VS Code's Explorer and select **Open with Live Server**.
+
+The trainer opens in your browser at a local address similar to `http://127.0.0.1:5500/universal-plc-trainer.html`. Live Server remains active until stopped and can reload the page when the file changes.
+
+> [!TIP]
+> You do **not** need VS Code or Live Server to use the trainer. If extension installation is restricted, choose Option A.
+
+</details>
+
+### Once the workstation opens
+
+1. **Confirm the 3D workstation appears.** You should see a power supply, PLC I/O modules, terminal block, push button, and pilot light. If the scene is blank, see [Troubleshooting](#troubleshooting).
+2. **Get familiar with the controls.** Use the table below to navigate the workstation.
 
 | Control | How to use it |
 | :--- | :--- |
 | **Orbit** | Drag with the mouse to rotate your view around the workstation. |
 | **Zoom** | Scroll to zoom in or out. **Double-click a terminal** to zoom directly to it. |
 | **Pan** | Use the pan controls to reposition the view. |
-| **GO TO** | Jump to a station. Click the **GO TO** header to collapse the list when you need more room. |
-| **Learning panel** | Browse exercises and follow instructions. Drag the panel aside if it covers equipment. |
+| **GO TO** | Jump to a station; select the **GO TO** header to collapse the list and make more room. |
+| **Learning panel** | Browse exercises and follow the instructions. Drag the panel aside if it covers equipment. |
 
-**5. Select Exercise 1.** Open the exercise library in the learning panel and choose **Exercise 1 — Push Button & Pilot Light**.
+3. **Select Exercise 1.** Open the exercise library in the learning panel and choose **Exercise 1 — Wire a push button and light**.
 
-All exercises are available from the start; you do not need to finish another exercise to unlock this one.
+All exercises are available from the start; no prior exercise must be completed to unlock another.
 
 > [!TIP]
-> Terminal labels can be difficult to read at full-bench zoom. **Double-click a terminal before making a connection** to get a closer view.
+> Terminal labels can be hard to read at full-bench zoom. **Double-click a terminal before wiring it** to get a closer view.
 
 ## Complete your first exercise
 
@@ -162,7 +187,7 @@ Expand the category that best matches what you're seeing.
 
 | Symptom | What to try |
 | :--- | :--- |
-| **The page opens, but the workstation is blank.** | Check that the HTML and JavaScript files have their original filenames and are in the **same folder**, then reload the page. |
+| **The page opens, but the workstation is blank.** | Check that the downloaded HTML file is complete and reload the page. If WebGL is blocked or unavailable, try another supported browser. An unusually small HTML file may indicate an incomplete download. |
 | **The browser says 3D graphics are unavailable.** | WebGL is unavailable or blocked. Try another supported browser. If none works, check your device's graphics capabilities and policy settings. |
 
 </details>
@@ -183,19 +208,20 @@ Expand the category that best matches what you're seeing.
 
 | Symptom | What to know |
 | :--- | :--- |
-| **Exercise progress disappears after reloading the page.** | This is expected in **V1**. Progress persistence has not been implemented yet. |
+| **Where is my progress kept?** | In the browser you opened the trainer with, on that computer. Reopen it the same way to carry on where you left off. A different browser, a different computer, or private/incognito browsing each start fresh. |
+| **I want to start over.** | **SYSTEM → Clear saved progress**. It asks for a second click to confirm, and it cannot be undone. |
 | **RESET WIRING clears the bench.** | This is expected. It removes installed wires **without changing exercise progress**. |
 
 </details>
 
-**Still experiencing issues?** Please contact [arden-yazici@weintekusa.com](mailto:arden-yazici@weintekusa.com) with a brief description of the issue and any relevant screenshots.
+**Still experiencing issues?** Email [arden-yazici@weintekusa.com](mailto:arden-yazici@weintekusa.com) with a brief description of what happened and any relevant screenshots.
 
 ## See also
 
 | Resource | Purpose |
 | :--- | :--- |
 | [Project README](README.md) | Product overview, requirements, support, and feedback. |
-| [Connect the trainer to a PLC](how-to_connect-a-plc.md) | Optional bridge setup, Modbus TCP communication, and CODESYS configuration. |
+| [Connect the trainer to a PLC](how-to_connect-plc.md) | Optional bridge setup, Modbus TCP communication, and CODESYS configuration. |
 | [Browser compatibility and system requirements](README.md#browser-compatibility) | Tested browsers, WebGL requirements, and current compatibility limitations. |
 | **Known simplifications and scope** *(guide pending)* | What the trainer models and what it deliberately does not. |
 | **System tab (inside the trainer)** | Glossary, I/O address map, and simulation behavior. |
@@ -203,4 +229,3 @@ Expand the category that best matches what you're seeing.
 ---
 
 <p align="center"><sub>Universal PLC Trainer by Weintek · Published by <strong>Weintek USA</strong></sub></p>
-
