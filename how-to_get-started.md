@@ -212,7 +212,7 @@ Expand the category that best matches what you're seeing.
 
 </details>
 
-**Still experiencing issues?** Email [arden-yazici@weintekusa.com](mailto:arden-yazici@weintekusa.com) with a brief description of what happened and any relevant screenshots.
+**Still experiencing issues?** Email [support@weintekusa.com](mailto:support@weintekusa.com) with a brief description of what happened and any relevant screenshots.
 
 ## See also
 
