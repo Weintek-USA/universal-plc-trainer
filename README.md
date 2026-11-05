@@ -177,7 +177,7 @@ support below.
 Questions, suggestions, and defect reports help improve the trainer. Because this release is distributed as a **compiled build rather than source code**, please submit corrections, ideas for new exercises, and bug reports through the feedback form provided with the release.
 
 - **Community questions:** [WeintekUSA Forum](https://forum.weintekusa.com/)
-- **Direct support:** [arden-yazici@weintekusa.com](mailto:arden-yazici@weintekusa.com)
+- **Direct support:** [support@weintekusa.com](mailto:support@weintekusa.com)
 - **Additional help:** FAQ and getting-started guide (links to be added)
 
 Support for this free product includes installation and startup issues, defect reports, and questions about using the trainer and its exercises. 
