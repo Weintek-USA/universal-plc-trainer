@@ -1,3 +1,4 @@
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/46ecea47-a22f-4072-a9bc-26a1b6759014" alt="Weintek logo" width="96" />
 </p>
@@ -10,6 +11,7 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Release-Alpha-0078F8?style=flat-square" alt="Alpha release" />
   <img src="https://img.shields.io/badge/Connection-External_PLC-022E68?style=flat-square" alt="External PLC connection" />
   <img src="https://img.shields.io/badge/Protocol-Modbus_TCP-0078F8?style=flat-square" alt="Modbus TCP" />
   <img src="https://img.shields.io/badge/Bridge-Node.js_22%2B-022E68?style=flat-square" alt="Node.js 22 or later" />
@@ -19,9 +21,12 @@
 <p align="center">
   <a href="#before-you-start"><strong>Requirements</strong></a> &nbsp;·&nbsp;
   <a href="#start-the-bridge-service">Start the bridge</a> &nbsp;·&nbsp;
-  <a href="#configure-the-plc-in-codesys">Configure CODESYS</a> &nbsp;·&nbsp;
+  <a href="#configure-the-plc-in-codesys">Configure CODESYS</a>
+</p>
+<p align="center">
   <a href="#verify-the-connection">Verify</a> &nbsp;·&nbsp;
-  <a href="#troubleshooting">Troubleshooting</a>
+  <a href="#troubleshooting">Troubleshooting</a> &nbsp;·&nbsp;
+  <a href="#alpha-testing-and-feedback">Feedback</a>
 </p>
 
 ---
@@ -55,20 +60,20 @@ A browser cannot open the raw TCP socket required for this connection, and the P
 
 | Requirement | Details |
 | :--- | :--- |
-| **Virtual PLC Trainer** | Open in its normal mode, with at least one exercise completed. |
-| **Bridge service** | `trainer-bridge.js`, from the [latest release](../../releases/latest). No dependencies to install. |
+| **Virtual PLC Trainer** | Open the trainer in a supported browser. No completed exercises are required. |
+| **Bridge service** | Download the Node.js bridge from the [latest release](../../releases/latest). The commands in this guide assume it is saved as `trainer-bridge.js`. No additional Node.js packages are required. |
 | **Node.js** | Version **22 or later**. Verify with `node --version`. |
 | **CODESYS** | **V3.5 SP21 Patch 6 or later** and the **CODESYS Control Win V3 x64** runtime. |
 | **Device package** | The **Modbus TCP Client** device package must be installed in CODESYS. |
 | **Network** | TCP **port 502** must be available on the computer running the bridge. |
-| **Optional project** | `{universal-plc-trainer-codesys-v1.project}` — a preconfigured example project that avoids most manual setup. |
+| **Optional project** | Download the CODESYS example `.project` file from the [latest release](../../releases/latest) to avoid most manual configuration. |
 
 > [!NOTE]
 > The bridge, Node.js, and CODESYS are only needed for **external PLC mode**. The trainer's internal simulation works without them.
 
 ## Start the bridge service
 
-**1. Open a terminal** in the folder containing `trainer-bridge.js`.
+**1. Save the downloaded bridge script as `trainer-bridge.js`, then open a terminal** in the folder containing it. If you keep a different release filename, use that filename in the Node.js commands below.
 
 In VS Code: **File → Open Folder…**, select the folder holding the file, then open a terminal with
 **Terminal → New Terminal** (`` Ctrl+` ``). It starts in that folder already.
@@ -106,17 +111,27 @@ The status should now display **BRIDGE ONLY — NO PLC**. This means the trainer
 
 ## Configure the PLC in CODESYS
 
-Choose **one** of the two setup paths below. Both end with the PLC polling the bridge.
+Choose **one** of the two setup paths below. Both result in the PLC polling the Node.js bridge.
+
+The CODESYS runtime acts as the **Modbus TCP Client**. In the device tree, the **Modbus TCP Server** node beneath it represents the *remote Node.js bridge*; it does not turn the PLC runtime into a server.
+
+```text
+Device (CODESYS Control Win V3 x64)
+└── Ethernet
+    └── Modbus TCP Client
+        └── Modbus TCP Server (Node.js bridge)
+```
 
 <details open>
 <summary><strong>Option A — Use the provided CODESYS project (recommended)</strong></summary>
 
-The optional example project, `{universal-plc-trainer-codesys-v1.project}`, includes a **Modbus TCP Client**, mapped I/O channels, and a simple test program that drives **DO0 from DI0**.
+The optional example `.project` file in the release is designed to provide a **Modbus TCP Client**, mapped I/O channels, and a simple test program that drives **DO0 from DI0**. Check that its device tree includes the remote **Modbus TCP Server** node shown above.
 
-1. **Open the project in CODESYS.** It was saved in **CODESYS 3.5 SP21 Patch 6 (64-bit)**. If you use a later version, accept its project-update prompt. Earlier versions cannot open it.
-2. **Bind the project to your runtime.** Double-click **Device**, select **Scan network**, then select the **CODESYS Control Win V3** instance running on your computer. The example project was originally saved with a different runtime binding.
-3. **Check the Ethernet adapter and client address.** Select an Ethernet interface on your computer. Set the Modbus TCP Client's IP address to the **computer running the bridge**. When both run on the same computer, use `127.0.0.1`.
-4. **Download and start the PLC program.** The trainer status should change from **BRIDGE ONLY — NO PLC** to **PLC POLLING**.
+1. **Open the example project in CODESYS.** The provided setup was developed with **CODESYS 3.5 SP21 Patch 6 (64-bit)**. If a later version prompts you to update the project, review and accept the update. Earlier versions may not be able to open it.
+2. **Select your runtime.** Double-click **Device**, use **Scan Network**, and select the **CODESYS Control Win V3** runtime on your computer.
+3. **Check the Ethernet adapter.** Under **Ethernet**, select the network interface used by the runtime.
+4. **Configure the bridge endpoint.** Open the **Modbus TCP Server** node beneath **Modbus TCP Client**. Set its **Server IP address** to the computer running the bridge and its **Port** to `502` (or the alternate port selected when starting the bridge). If the bridge and runtime run on the same computer, use `127.0.0.1`.
+5. **Confirm the I/O mappings and start the program.** Check the mapped channels, download the application, and start the PLC program. The trainer status should change from **BRIDGE ONLY — NO PLC** to **PLC POLLING**.
 
 **Next:** Skip the manual setup and go to [Verify the connection](#verify-the-connection).
 
@@ -125,11 +140,13 @@ The optional example project, `{universal-plc-trainer-codesys-v1.project}`, incl
 <details>
 <summary><strong>Option B — Configure your own CODESYS project</strong></summary>
 
-1. **Add a Modbus TCP Client** under the Ethernet adapter in the CODESYS device tree. Use **Modbus TCP Client**, *not* the legacy **Modbus TCP Master**; the legacy device has a different configuration dialog and does not work with this bridge.
-2. **Enter the bridge address.** Set the client's IP address to the computer running the bridge and the TCP port to **502**. If the bridge is on the same computer as the CODESYS runtime, use `127.0.0.1`.
-3. **Configure Modbus channels** for the signals your application needs. Use the [register map](#modbus-register-map) below, the map printed at bridge startup, or the map in the trainer's **PLC & I/O** tab.
-4. **Create a simple test program.** Read **DI0** and use its state to control **DO0**. This is enough to test the connection before adding more logic.
-5. **Download and start the PLC program.** The trainer status should change from **BRIDGE ONLY — NO PLC** to **PLC POLLING**.
+1. **Add an Ethernet device**, if one is not already present, under your CODESYS controller in the device tree. Choose the network interface used by the runtime.
+2. **Add a Modbus TCP Client** under **Ethernet**. This represents the PLC runtime initiating Modbus requests to the bridge.
+3. **Add a Modbus TCP Server** beneath the **Modbus TCP Client**. This child device represents the *remote bridge* and is where you configure the endpoint and channels. CODESYS versions may use older Master/Slave names; this guide uses Client/Server terminology for clarity.
+4. **Enter the bridge address.** Open the child **Modbus TCP Server** node, then set **Server IP address** to the computer running the bridge and **Port** to `502` (or your selected alternate port). Use `127.0.0.1` when the bridge and runtime are on the same computer.
+5. **Configure the Modbus channels and I/O mapping.** On the server node, add channels for the signals your program uses and map them to PLC variables. For a basic test, configure a **Read Discrete Inputs** channel for **DI0** (function code 02, offset 0) and a coil-write channel for **DO0** (function code 05 or 15, offset 0). Use the [register map](#modbus-register-map) below and the map printed at bridge startup.
+6. **Create the test logic.** Read **DI0** and use it to control **DO0**. This verifies the communication before you add more advanced logic.
+7. **Download and run the program.** The trainer status should change from **BRIDGE ONLY — NO PLC** to **PLC POLLING**.
 
 </details>
 
@@ -139,23 +156,13 @@ The optional example project, `{universal-plc-trainer-codesys-v1.project}`, incl
 | :--- | :--- | :--- | :--- |
 | `10001–10004` | Discrete input | **DI0–DI3** | PLC reads |
 | `30001–30002` | Input register | **AI0–AI1** (raw counts) | PLC reads |
-| `00001–00004` | Coil | **DO0–DO1**, plus **DO2–DO3** (spare) | PLC writes |
+| `00001–00004` | Coil | **DO0–DO3** (DO2–DO3 spare) | PLC writes |
 | `40001` | Holding register | **AO0** (reserved) | Not used in this version |
 
 **Analog inputs:** AI0 and AI1 are provided as **raw counts**, not engineering units. Scale them in the PLC program using the trainer's documented scale, just as you would with a physical analog module.
 
 > [!WARNING]
 > **Check your register offsets.** The table uses conventional **1-based Modbus addresses**. CODESYS channel configuration may instead expect **0-based offsets**: for example, DI0 is **offset 0**, not `10001`. All-zero values or signals shifted by one address often indicate this mismatch.
-
-<!-- OPTIONAL SCREENSHOT:
-Add a screenshot of the trainer's PLC & I/O tab showing the live register values:
-
-<p align="center">
-  <img src="docs/assets/plc-io-tab.png" alt="Virtual PLC Trainer PLC & I/O tab showing Modbus signals" width="900" />
-</p>
-
-Confirm the file location and commit the image before enabling it.
--->
 
 ## Verify the connection
 
@@ -181,7 +188,7 @@ If the setup does not behave as expected, expand the relevant section.
 | **The address or port is already in use.** | Another process, such as a Modbus tool or a previous bridge instance, is holding **TCP port 502**. Close that process and restart the bridge. |
 | **The bridge reports a permission error on startup.** | Port **502** is privileged on macOS and Linux. Start the bridge with `--modbus-port 5020` and point the PLC at that port instead. Windows is unaffected. |
 | **The trainer shows NO BRIDGE after selecting EXTERNAL PLC.** | It cannot reach the bridge. Confirm the bridge is still running in its terminal, then check local firewall or browser restrictions. |
-| **The trainer stays on BRIDGE ONLY — NO PLC.** | The PLC is not polling. Verify that the program is running, IP/port settings are correct, and the device is **Modbus TCP Client**, not the legacy Master. |
+| **The trainer stays on BRIDGE ONLY — NO PLC.** | The PLC is not polling. Verify that the runtime is running, the bridge endpoint is configured on the **Modbus TCP Server** child node, and the client has an active polling channel. |
 | **The connection drops during use.** | The bridge terminal may have closed, the computer may have slept, or the network path may have changed. Restart the bridge and select **EXTERNAL PLC** again. |
 
 </details>
@@ -192,9 +199,9 @@ If the setup does not behave as expected, expand the relevant section.
 | Symptom | Likely cause and fix |
 | :--- | :--- |
 | **CODESYS cannot open the provided project.** | The installed CODESYS version is older than the project's version. Use **3.5 SP21 Patch 6** or later. |
-| **A device in the tree is unresolved or missing.** | Install the **Modbus TCP Client** device package, then reopen the project. |
+| **A device in the tree is unresolved or missing.** | Install the required CODESYS Modbus TCP device packages, then reopen the project. |
 | **CODESYS reports no gateway or cannot find the device.** | The project may still reference the original runtime. Open **Device → Scan network** and choose your local **Control Win V3** instance. |
-| **The Modbus client is offline or times out.** | Check the client's IP address, firewall access to **port 502**, and whether the bridge is running. |
+| **The Modbus client is offline or times out.** | Check the **Server IP address** and port on the child **Modbus TCP Server** node, firewall access, and whether the bridge is running. |
 | **The runtime stops after a period of operation.** | An unlicensed **CODESYS Control Win V3** runtime stops when its demo period expires. Restart the runtime. |
 
 </details>
@@ -209,7 +216,14 @@ If the setup does not behave as expected, expand the relevant section.
 
 </details>
 
-For any other issue, contact the support representative listed in the main `README.md`. Include **what you did, what you expected, and what happened**. If possible, attach the **bridge's startup output** and a screenshot of the trainer's **PLC & I/O** tab.
+For other technical issues, email [support@weintekusa.com](mailto:support@weintekusa.com) with **what you did, what you expected, and what happened**. If possible, include the **bridge's startup output** and a screenshot of the trainer's **PLC & I/O** tab.
+
+## Alpha testing and feedback
+
+The **Universal Virtual PLC Trainer V1** is available for alpha testing. Feedback on the external PLC connection, bridge setup, and overall trainer experience is welcome.
+
+- **[Report a fault or request a feature](https://airtable.com/app4aD7d8dUZWlUT0/pagLJnoYMYpbd6UyK/form)** — Report a specific issue, unexpected behavior, or improvement idea.
+- **[Submit an overall review](https://airtable.com/app4aD7d8dUZWlUT0/pageaZrlMt8toMNYm/form)** — Share your overall experience with the trainer, including usability and learning value.
 
 ## See also
 
@@ -217,10 +231,10 @@ For any other issue, contact the support representative listed in the main `READ
 | :--- | :--- |
 | [Getting-started guide](how-to_get-started.md) | Open the trainer and complete your first exercise. |
 | [Application README](README.md) | Product overview, support contact, and general requirements. |
-| [Browser Compatibility](README.md#browser-compatibility) | Supported browsers and minimum versions. |
-| **Known simplifications and scope** *(link to be added)* | What the trainer models and what it intentionally simplifies. |
+| [Browser compatibility](README.md#browser-compatibility) | Tested browsers, WebGL requirements, and current compatibility limitations. |
 | **System tab (inside the trainer)** | Glossary, I/O address map, and simulation behavior. |
 
 ---
 
 <p align="center"><sub>Universal Virtual PLC Trainer · Published by <strong>Weintek USA</strong></sub></p>
+
