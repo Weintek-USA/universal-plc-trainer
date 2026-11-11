@@ -72,7 +72,7 @@ It teaches how PLC inputs and outputs connect to push buttons, sensors, transmit
 
 **No installation, admin access, network connection, or physical PLC is required for the built-in simulation.**
 
-1. **Download `universal-plc-trainer.html`** from the [latest release](../../releases/latest). Use the release page, not the file view in the repository — GitHub serves `.html` files as plain text, so a link from the file list shows you the source code instead of the trainer.
+1. **Download `universal-plc-trainer.html`** from the [V1 alpha release](../../releases/tag/v1.0.0-alpha.1). Use the release page, not the file view in the repository — GitHub serves `.html` files as plain text, so a link from the file list shows you the source code instead of the trainer.
 2. **Open it.** Double-click the file, or right-click and choose **Open with** to pick a different browser.
 3. **Choose an exercise.** When the 3D workstation appears, open the exercise library in the learning panel and start with **Exercise 1 — Wire a push button and light**.
 
@@ -134,7 +134,7 @@ The **Universal Virtual PLC Trainer** has been tested with the following desktop
 **Recommended:** Use a current stable version of Chrome, Edge, Firefox, or Safari with WebGL available. Hardware-accelerated graphics are recommended for smoother interaction with the 3D workstation.
 
 > [!NOTE]
-> **Testing scope:** Browser compatibility information is based on third-party WebGL research and internal testing. While older browser versions may support WebGL, compatibility with the Universal PLC Trainer has not been verified. Hardware acceleration is recommended for optimal performance.
+> **Testing scope:** Browser compatibility information is based on third-party WebGL research and internal testing. While older browser versions may support WebGL, compatibility with the Universal Virtual PLC Trainer has not been verified. Hardware acceleration is recommended for optimal performance.
 
 ## Connect to a real PLC
 
@@ -162,7 +162,7 @@ If something doesn't work as expected, open the common issues below.
 
 | Issue | What to try |
 | :--- | :--- |
-| **The browser shows a wall of code instead of the trainer.** | The file was opened from a repository link rather than downloaded. Get it from the [latest release](../../releases/latest) and save it to your computer first. |
+| **The browser shows a wall of code instead of the trainer.** | The file was opened from a repository link rather than downloaded. Get it from the [V1 alpha release](../../releases/tag/v1.0.0-alpha.1) and save it to your computer first. |
 | **The page loads, but the workstation is blank.** | WebGL is unavailable or blocked. Try another supported browser; see [Browser compatibility](#browser-compatibility). |
 | **The trainer will not open at all.** | Make sure the download finished — the file is about 1 MB. A truncated download shows a blank or broken page. |
 
@@ -187,6 +187,8 @@ support below.
 
 ## Support and feedback
 
+**Support for this free product includes installation and startup issues, defect reports, and questions about using the trainer and its exercises.**
+
 Alpha tester feedback is welcome, whether it concerns a specific issue or the overall experience with the trainer.
 
 - **Bug reports and feature requests:** [Submit a specific issue or suggestion](https://airtable.com/app4aD7d8dUZWlUT0/pagLJnoYMYpbd6UyK/form)
@@ -197,9 +199,7 @@ Alpha tester feedback is welcome, whether it concerns a specific issue or the ov
 
 Because this release is distributed as a **compiled build rather than source code**, please use the feedback forms above to submit corrections, suggestions, and bug reports.
 
-
-Support for this free product includes installation and startup issues, defect reports, and questions about using the trainer and its exercises. 
-
 ## Terms of use
 
-**All rights reserved.** Licensing is not yet determined; all rights reserved pending review.
+All rights reserved. Licensing terms are pending review and have not yet been finalized.
+
