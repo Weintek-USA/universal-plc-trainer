@@ -1,3 +1,4 @@
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/46ecea47-a22f-4072-a9bc-26a1b6759014" alt="Weintek logo" width="96" />
 </p>
@@ -11,19 +12,22 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Version-V1-022E68?style=flat-square" alt="Version V1" />
+  <img src="https://img.shields.io/badge/Release-Alpha-0078F8?style=flat-square" alt="Alpha release" />
   <img src="https://img.shields.io/badge/Guided_exercises-6-0078F8?style=flat-square" alt="6 guided exercises" />
   <img src="https://img.shields.io/badge/Fault_scenarios-9-022E68?style=flat-square" alt="9 diagnostic scenarios" />
   <img src="https://img.shields.io/badge/Hardware-Not_required-0078F8?style=flat-square" alt="No physical hardware required" />
 </p>
 
 <p align="center">
-  <sub>Published by <strong>Weintek USA</strong> · Version V1 · Released for Alpha Testing 11/12/2026</sub>
+  <sub>Published by <strong>Weintek USA</strong> · Alpha release · November 12, 2026</sub>
 </p>
 
 <p align="center">
   <a href="#quick-start"><strong>Quick start</strong></a> &nbsp;·&nbsp;
   <a href="#what-you-can-learn">What you'll learn</a> &nbsp;·&nbsp;
-  <a href="#browser-compatibility">Browser compatibility</a> &nbsp;·&nbsp;
+  <a href="#browser-compatibility">Browser compatibility</a>
+</p>
+<p align="center">
   <a href="#connect-to-a-real-plc">PLC connection</a> &nbsp;·&nbsp;
   <a href="#troubleshooting">Troubleshooting</a> &nbsp;·&nbsp;
   <a href="#support-and-feedback">Get help</a>
@@ -41,6 +45,15 @@ Commit the screenshot to the specified path (or update the path) before enabling
 -->
 
 ---
+
+## Alpha testing and feedback
+
+**Version V1 is available for alpha testing.** Test the exercises, explore the workstation, and share what works well or needs improvement. Feedback on the overall trainer and individual issues is welcome.
+
+- **[Report a fault or request a feature](https://airtable.com/app4aD7d8dUZWlUT0/pagLJnoYMYpbd6UyK/form)** — Use this form for a specific bug, unexpected behavior, or improvement idea.
+- **[Submit an overall review](https://airtable.com/app4aD7d8dUZWlUT0/pageaZrlMt8toMNYm/form)** — Share your general experience with the trainer, including usability, learning value, and overall impressions.
+
+Both forms collect feedback on the **Universal Virtual PLC Trainer as a whole**. Thank you for helping improve this alpha release.
 
 ## Overview
 
@@ -174,11 +187,16 @@ support below.
 
 ## Support and feedback
 
-Questions, suggestions, and defect reports help improve the trainer. Because this release is distributed as a **compiled build rather than source code**, please submit corrections, ideas for new exercises, and bug reports through the feedback form provided with the release.
+Alpha tester feedback is welcome, whether it concerns a specific issue or the overall experience with the trainer.
 
+- **Bug reports and feature requests:** [Submit a specific issue or suggestion](https://airtable.com/app4aD7d8dUZWlUT0/pagLJnoYMYpbd6UyK/form)
+- **General feedback:** [Submit an overall trainer review](https://airtable.com/app4aD7d8dUZWlUT0/pageaZrlMt8toMNYm/form)
 - **Community questions:** [WeintekUSA Forum](https://forum.weintekusa.com/)
 - **Direct support:** [support@weintekusa.com](mailto:support@weintekusa.com)
-- **Additional help:** FAQ and getting-started guide (links to be added)
+- **Getting started:** [Getting-started guide](how-to_get-started.md)
+
+Because this release is distributed as a **compiled build rather than source code**, please use the feedback forms above to submit corrections, suggestions, and bug reports.
+
 
 Support for this free product includes installation and startup issues, defect reports, and questions about using the trainer and its exercises. 
 
