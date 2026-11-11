@@ -75,8 +75,8 @@ const TRAINER_TIMEOUT_MS = parseInt(opt('timeout', '3000'), 10);
  *   di / ai   produced by the trainer's wiring, READ by the PLC
  *   dq / ao   produced by the PLC's program,    SENT to the trainer
  *
- * Analog values are raw counts on the trainer's own 0..27648 scale
- * (Siemens-style), exactly as the trainer already computes them. The bridge
+ * Analog values are raw counts on the trainer's own 0..27648 scale,
+ * exactly as the trainer already computes them. The bridge
  * does no scaling: converting counts to engineering units is the PLC
  * program's job, which is the whole point of the exercise.
  */
