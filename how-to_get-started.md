@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/46ecea47-a22f-4072-a9bc-26a1b6759014" alt="Weintek logo" width="96" />
+  <img src="docs/assets/weintekusa-logo-horizontal.png" alt="WeintekUSA logo" width="240" />
 </p>
 
 <h1 align="center">Getting Started with the Universal Virtual PLC Trainer</h1>
