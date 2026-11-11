@@ -1,21 +1,13 @@
-<!--
-PRE-PUBLISH CHECKLIST (remove before release):
-- Verify the GitHub Releases link and the workstation screenshot path.
-- Verify all control labels and exercise details against the V1 release build.
-- Confirm the current saved-progress behavior described below.
-- Replace pending documentation references when those guides are published.
--->
-
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/46ecea47-a22f-4072-a9bc-26a1b6759014" alt="Weintek logo" width="96" />
 </p>
 
-<h1 align="center">How to Run the Universal PLC Trainer by Weintek</h1>
+<h1 align="center">Getting Started with the Universal Virtual PLC Trainer</h1>
 
 <p align="center">
   <strong>Your first circuit, from wiring to working.</strong><br />
-  Open the 3D workstation, connect a push button and pilot light, and watch the PLC's built-in simulation respond.
+  Open the 3D workstation, connect a push button and pilot light, and watch the built-in PLC simulation respond.
 </p>
 
 <p align="center">
@@ -28,24 +20,27 @@ PRE-PUBLISH CHECKLIST (remove before release):
 <p align="center">
   <a href="#before-you-start"><strong>Requirements</strong></a> &nbsp;·&nbsp;
   <a href="#open-the-trainer">Open the trainer</a> &nbsp;·&nbsp;
-  <a href="#complete-your-first-exercise">First exercise</a> &nbsp;·&nbsp;
+  <a href="#complete-your-first-exercise">First exercise</a>
+</p>
+<p align="center">
   <a href="#troubleshooting">Troubleshooting</a> &nbsp;·&nbsp;
+  <a href="#alpha-testing-and-feedback">Feedback</a> &nbsp;·&nbsp;
   <a href="#see-also">More guides</a>
 </p>
 
 <p align="center">
   <a href="docs/assets/trainer-workstation-exercise1.png">
-    <img src="docs/assets/trainer-workstation-exercise1.png" alt="Universal PLC Trainer 3D workstation with Exercise 1 selected, showing a power supply, PLC modules, and learning panel" width="650" />
+    <img src="docs/assets/trainer-workstation-exercise1.png" alt="Universal Virtual PLC Trainer 3D workstation with Exercise 1 selected, showing a power supply, PLC modules, and learning panel" width="650" />
   </a>
 </p>
 
-<p align="center"><sub>Figure 1. Universal PLC Trainer workstation with Exercise 1 selected. The learning panel guides students through wiring the 24 VDC power supply to the terminal block.</sub></p>
+<p align="center"><sub>Figure 1. Universal Virtual PLC Trainer workstation with Exercise 1 selected. The learning panel guides students through wiring the 24 VDC power supply to the terminal block.</sub></p>
 
 ---
 
 ## Overview
 
-This guide walks you through **Exercise 1** of the **Universal PLC Trainer by Weintek**: wire a push button to a PLC input and a pilot light to a PLC output, then press the button to turn on the light.
+This guide walks you through **Exercise 1** of the **Universal Virtual PLC Trainer**: wire a push button to a PLC input and a pilot light to a PLC output, then press the button to turn on the light.
 
 The trainer runs **locally in a web browser** from a single file on your computer. You do **not** need a physical PLC, CODESYS, an installer, an internet connection, or industrial equipment. The trainer uses its **built-in PLC simulation** for all steps in this guide.
 
@@ -212,7 +207,14 @@ Expand the category that best matches what you're seeing.
 
 </details>
 
-**Still experiencing issues?** Email [support@weintekusa.com](mailto:support@weintekusa.com) with a brief description of what happened and any relevant screenshots.
+## Alpha testing and feedback
+
+The **Universal Virtual PLC Trainer V1** is available for alpha testing. Feedback on the exercises, workstation, and overall user experience is welcome.
+
+- **[Report a fault or request a feature](https://airtable.com/app4aD7d8dUZWlUT0/pagLJnoYMYpbd6UyK/form)** — Report a specific issue, unexpected behavior, or improvement idea.
+- **[Submit an overall review](https://airtable.com/app4aD7d8dUZWlUT0/pageaZrlMt8toMNYm/form)** — Share your experience with usability, learning value, and the trainer as a whole.
+
+For additional assistance, contact [support@weintekusa.com](mailto:support@weintekusa.com) and include a brief description of the issue and any relevant screenshots.
 
 ## See also
 
@@ -221,9 +223,8 @@ Expand the category that best matches what you're seeing.
 | [Project README](README.md) | Product overview, requirements, support, and feedback. |
 | [Connect the trainer to a PLC](how-to_connect-plc.md) | Optional bridge setup, Modbus TCP communication, and CODESYS configuration. |
 | [Browser compatibility and system requirements](README.md#browser-compatibility) | Tested browsers, WebGL requirements, and current compatibility limitations. |
-| **Known simplifications and scope** *(guide pending)* | What the trainer models and what it deliberately does not. |
 | **System tab (inside the trainer)** | Glossary, I/O address map, and simulation behavior. |
 
 ---
 
-<p align="center"><sub>Universal PLC Trainer by Weintek · Published by <strong>Weintek USA</strong></sub></p>
+<p align="center"><sub>Universal Virtual PLC Trainer · Published by <strong>Weintek USA</strong></sub></p>
