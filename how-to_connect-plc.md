@@ -66,7 +66,7 @@ A browser cannot open the raw TCP socket required for this connection, and the P
 | **CODESYS** | **V3.5 SP21 Patch 6 or later** and the **CODESYS Control Win V3 x64** runtime. |
 | **Device package** | The **Modbus TCP Client** device package must be installed in CODESYS. |
 | **Network** | TCP **port 502** must be available on the computer running the bridge. |
-| **Optional project** | Download the CODESYS example `.project` file from the [latest release](../../releases/latest) to avoid most manual configuration. |
+| **Optional project** | [Download the CODESYS example project](codesys/universal-plc-trainer-codesys-v1.project) — a preconfigured project that simplifies the Modbus TCP setup. |
 
 > [!NOTE]
 > The bridge, Node.js, and CODESYS are only needed for **external PLC mode**. The trainer's internal simulation works without them.
