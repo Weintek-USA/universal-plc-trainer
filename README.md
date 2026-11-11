@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <sub>Published by <strong>Weintek USA</strong> · Version V1 · Release date to be announced</sub>
+  <sub>Published by <strong>Weintek USA</strong> · Version V1 · Released for Alpha Testing 11/12/2026</sub>
 </p>
 
 <p align="center">
