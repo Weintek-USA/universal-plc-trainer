@@ -203,5 +203,5 @@ Because this release is distributed as a **compiled build rather than source cod
 
 Copyright © 2026 Weintek USA. All rights reserved.
 
-This project is currently released for alpha testing. Adoption of the GNU General Public License v3.0 (GPLv3) is pending internal review and approval. Until a license is formally adopted, all rights remain reserved by Weintek USA.
+This project is currently released for alpha testing. Adoption of the GNU General Public License v3.0 (GPLv3) is pending. Until a license is formally adopted, all rights remain reserved by Weintek USA.
 
