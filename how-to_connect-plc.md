@@ -61,7 +61,7 @@ A browser cannot open the raw TCP socket required for this connection, and the P
 | Requirement | Details |
 | :--- | :--- |
 | **Virtual PLC Trainer** | Open the trainer in a supported browser. No completed exercises are required. |
-| **Bridge service** | Download the Node.js bridge from the [latest release](../../releases/latest). The commands in this guide assume it is saved as `trainer-bridge.js`. No additional Node.js packages are required. |
+| **Bridge service** | Download the Node.js bridge from the [V1 alpha release](../../releases/tag/v1.0.0-alpha.1). The commands in this guide assume it is saved as `universal-plc-trainer-bridge.js`. No additional Node.js packages are required. |
 | **Node.js** | Version **22 or later**. Verify with `node --version`. |
 | **CODESYS** | **V3.5 SP21 Patch 6 or later** and the **CODESYS Control Win V3 x64** runtime. |
 | **Device package** | The **Modbus TCP Client** device package must be installed in CODESYS. |
@@ -73,15 +73,14 @@ A browser cannot open the raw TCP socket required for this connection, and the P
 
 ## Start the bridge service
 
-**1. Save the downloaded bridge script as `trainer-bridge.js`, then open a terminal** in the folder containing it. If you keep a different release filename, use that filename in the Node.js commands below.
+**1. Download `universal-plc-trainer-bridge.js`, then open a terminal** in the folder containing the file.
 
-In VS Code: **File → Open Folder…**, select the folder holding the file, then open a terminal with
-**Terminal → New Terminal** (`` Ctrl+` ``). It starts in that folder already.
+In VS Code: **File → Open Folder…**, select the folder holding the file, then open a terminal with **Terminal → New Terminal** (`` Ctrl+` ``). It starts in that folder already.
 
 **2. Run the bridge:**
 
 ```bash
-node trainer-bridge.js
+node universal-plc-trainer-bridge.js
 ```
 
 The bridge prints its register map and starts listening on **port 502**. **Keep the terminal open:** closing it stops the bridge and disconnects the PLC.
@@ -91,13 +90,12 @@ The bridge prints its register map and starts listening on **port 502**. **Keep 
 > `listen EACCES: permission denied`, start it on a higher port and point the PLC at that port
 > instead — the bridge prints this suggestion itself:
 > ```bash
-> node trainer-bridge.js --modbus-port 5020
+> node universal-plc-trainer-bridge.js --modbus-port 5020
 > ```
 > Windows has no such restriction.
 
 > [!TIP]
-> To check the bridge before involving a PLC, run `node trainer-bridge.js --demo`. It invents a
-> moving set of inputs so you can watch values change with no browser or PLC attached.
+> To check the bridge before involving a PLC, run `node universal-plc-trainer-bridge.js --demo`. It generates simulated inputs so you can watch values change without a browser or PLC attached.
 
 **3. Connect the trainer to the bridge.** Open the trainer and select **EXTERNAL PLC**.
 
@@ -237,4 +235,3 @@ The **Universal Virtual PLC Trainer V1** is available for alpha testing. Feedbac
 ---
 
 <p align="center"><sub>Universal Virtual PLC Trainer · Published by <strong>Weintek USA</strong></sub></p>
-
