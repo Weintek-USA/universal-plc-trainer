@@ -113,7 +113,7 @@ The trainer is designed for **students, new technicians, integrators, and Weinte
 
 | Required for the built-in trainer | Details |
 | :--- | :--- |
-| **Trainer file** | `universal-plc-trainer.html` — one self-contained file. Nothing else is needed, and it can be renamed or moved freely. |
+| **Trainer file** | `universal-plc-trainer.html` — one self-contained file. |
 | **Browser** | A modern browser with WebGL enabled. See [Browser compatibility](#browser-compatibility) for tested environments. |
 | **Graphics** | WebGL must be available. A dedicated graphics card is not required, but performance and availability depend on browser and device settings. |
 | **Network and hardware** | No network connection, PLC hardware, or administrator rights are required for local use. |
