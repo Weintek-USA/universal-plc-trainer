@@ -92,7 +92,7 @@ The bridge prints its register map and starts listening on **port 502**. **Keep 
 > ```bash
 > node universal-plc-trainer-bridge.js --modbus-port 5020
 > ```
-> Windows has no such restriction.
+> Windows does not have this restriction.
 
 > [!TIP]
 > To check the bridge before involving a PLC, run `node universal-plc-trainer-bridge.js --demo`. It generates simulated inputs so you can watch values change without a browser or PLC attached.
