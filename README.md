@@ -144,7 +144,7 @@ This connection uses a separate bridge because browser pages cannot open raw Mod
 
 **Additional requirements for external PLC mode:**
 
-- `trainer-bridge.js` — the bridge service, from the same release
+- `universal-plc-trainer-bridge.js` — the bridge service, from the same release
 - **Node.js 22 or later** — to run the bridge
 - **CODESYS V3.5 SP21 Patch 6+** with the **CODESYS Control Win V3 x64** runtime and **Modbus TCP Client** device package
 
